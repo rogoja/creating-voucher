@@ -1,0 +1,23 @@
+@import './colors';
+
+html,
+body {
+  height: 100%;
+  font-family: Helvetica;
+  color: $primary;
+}
+
+label {
+  font-size: 1rem;
+  color: $gray;
+}
+
+body {
+  background-color: $primary;
+  font-size: 18px;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: unset;
+}

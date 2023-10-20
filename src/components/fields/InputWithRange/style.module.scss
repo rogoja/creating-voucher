@@ -1,0 +1,116 @@
+@import '@/scss/colors';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .range {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+  }
+
+  .input {
+    margin-top: 5px;
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+  }
+}
+
+.inputContainer {
+  margin-top: 5px;
+
+  .control {
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid $gray;
+    border-radius: 4px;
+
+    .placeholder,
+    .value {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      padding: 5px;
+      z-index: 1;
+    }
+
+    .input {
+      display: flex;
+      color: inherit;
+      font: inherit;
+      padding: 5px;
+      width: 100%;
+      z-index: 2;
+      background-color: transparent;
+      border: none;
+    }
+  }
+}
+
+.menu {
+  top: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 11px hsla(0, 0%, 0%, 0.1);
+  margin-bottom: 8px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  overflow: auto;
+  max-height: 200px;
+
+  .option,
+  .noOptions {
+    padding: 8px 12px;
+  }
+
+  .option {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    &.selected {
+      background-color: #2684FF;
+      color: #fff;
+
+      &:hover,
+      &:focus {
+        background-color: #2684FF;
+      }
+
+      .subLabel {
+        color: rgba(255, 255, 255, 0.38);
+      }
+    }
+
+    &:hover,
+    &:focus {
+      background-color: #DEEBFF;
+    }
+
+    .subLabel {
+      font-size: 0.8rem;
+      color: $ligthGray;
+    }
+  }
+
+  .noOptions {
+    text-align: center;
+  }
+}

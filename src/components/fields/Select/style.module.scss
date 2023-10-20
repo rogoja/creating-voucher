@@ -1,0 +1,167 @@
+@import '@/scss/colors';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .label {
+    transition: color .2s ease-in-out;
+  }
+  
+  .inputContainer {
+    margin-top: 5px;
+
+    .control {
+      display: flex;
+      position: relative;
+      background-color: #fff;
+      border: 1px solid $gray;
+      border-radius: 4px;
+      transition: border-color .2s ease-in-out;
+
+      .placeholder,
+      .value {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        padding: 5px;
+        z-index: 1;
+      }
+
+      .input {
+        display: flex;
+        color: inherit;
+        font: inherit;
+        padding: 5px;
+        width: 100%;
+        z-index: 2;
+        background-color: transparent;
+        border: none;
+      }
+
+      .error {
+        display: flex;
+        // align-items: center;
+        justify-content: center;
+        background-color: $error;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        color: #fff;
+        position: absolute;
+        right: 5px;
+        margin-top: 5px;
+        z-index: 3;
+
+        &:hover {
+          &::after,
+          &::before {
+            display: flex;
+          }
+        }
+
+        $sizeTriangle: 15px;
+
+        &::after {
+          position: absolute;
+          bottom: calc(100% + $sizeTriangle / 2);
+          content: attr(data-error);
+          display: none;
+          background-color: #fff;
+          border-radius: 4px;
+          box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 11px hsla(0, 0%, 0%, 0.1);
+          padding: 5px;
+          color: $primary;
+          font-size: 1rem;
+          white-space: nowrap;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: calc(100% + 4px);
+          width: $sizeTriangle;
+          height: $sizeTriangle;
+          display: none;
+          background-color: #fff;
+          transform: rotate(45deg);
+          box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 11px hsla(0, 0%, 0%, 0.1);
+        }
+      }
+    }
+  }
+
+  .menu {
+    top: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 11px hsla(0, 0%, 0%, 0.1);
+    margin-bottom: 8px;
+    margin-top: 8px;
+    box-sizing: border-box;
+    overflow: auto;
+    max-height: 200px;
+
+    .option,
+    .noOptions {
+      padding: 8px 12px;
+    }
+
+    .option {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+
+      &.selected {
+        background-color: #2684FF;
+        color: #fff;
+
+        &:hover,
+        &:focus {
+          background-color: #2684FF;
+        }
+
+        .subLabel {
+          color: rgba(255, 255, 255, 0.38);
+        }
+      }
+
+      &:hover,
+      &:focus {
+        background-color: #DEEBFF;
+      }
+
+      .subLabel {
+        font-size: 0.8rem;
+        color: $ligthGray;
+      }
+    }
+
+    .noOptions {
+      text-align: center;
+    }
+  }
+
+  &.error {
+    &:focus-within {
+      .error {
+        display: none;
+      }
+    }
+
+    &:not(:focus-within) {
+      .label {
+        color: $error;
+      }
+
+      .control {
+        border-color: $error;
+      }
+    }
+  }
+}

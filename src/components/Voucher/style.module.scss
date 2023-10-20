@@ -1,0 +1,108 @@
+@import '@/scss/colors';
+
+.voucher {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  border-radius: .25rem;
+  padding: 0;
+
+  .body,
+  .footer {
+    display: flex;
+    position: relative;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    transition: box-shadow .3s ease;
+  }
+
+  .body {
+    overflow: hidden;
+    flex-direction: column;
+    box-shadow: inset 0px 0px 0px 1px #e5e9ec;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    background: #EB3833;
+    background-image: linear-gradient(to right bottom, #ff541e, #ff4835, #fc3d47, #f63657) !important;
+
+    .text {
+      flex: 1 1 auto;
+      padding: 1.25rem 2rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      color: $secondary;
+
+      .title {
+        font-size: 1.3rem;
+      }
+
+      .amount {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .footer {
+    flex-direction: column;
+    padding: .5rem;
+    box-shadow: inset 0 -1px 0 1px #e5e9ec;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    min-height: 2rem;
+
+    .details {
+      display: flex;
+      flex-direction: column;
+
+      &:not(:first-child) {
+        margin-top: 5px;
+      }
+
+      .label {
+        font-size: 0.8rem;
+        color: $ligthGray;
+      }
+    }
+  }
+
+  &:hover .footer {
+    box-shadow: inset 0px -1px 0px 1px #e5e9ec, 0 0.125rem 0.25rem rgba(33, 37, 41, 0.075) !important;
+  }
+
+
+  .borderLeft,
+  .borderRight {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #e5e9ec;
+      border-radius: 50%;
+      background: $secondary;
+    }
+  }
+
+  .borderRight {
+    right: 0;
+
+    &:before {
+      right: -15px;
+    }
+  }
+
+  .borderLeft:before {
+    left: -15px;
+  }
+}

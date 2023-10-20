@@ -1,0 +1,12 @@
+@import '@/scss/colors';
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+
+  .language {
+    color: $secondary;
+    text-transform: uppercase;
+  }
+}

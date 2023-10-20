@@ -1,0 +1,19 @@
+@import '@/scss/colors';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.textArea {
+  margin-top: 5px;
+  resize: none;
+  border: 1px solid rgba($gray, 0.8);
+  transition: border-color 0.5s ease-out;
+  padding: 5px;
+  border-radius: 4px;
+
+  &:hover {
+    border-color: $gray;
+  }
+}

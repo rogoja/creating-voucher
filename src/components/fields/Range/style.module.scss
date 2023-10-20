@@ -1,0 +1,71 @@
+@import '@/scss/colors';
+
+.input {
+  -webkit-appearance: none;
+  appearance: none; 
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+  height: 6px;
+  margin: 0;
+  background: #ccc;
+  border: none;
+}
+
+.input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none; 
+  height: 15px;
+  width: 15px;
+  background-color: $accent;
+  border-radius: 50%;
+  border: none;
+  transition: .2s ease-in-out;
+}
+
+.input::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background-color: $accent;
+  border-radius: 50%;
+  border: none;
+  transition: .2s ease-in-out;
+}
+
+.input::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 10px rgba($accent, .1)
+}
+
+.input::-moz-range-thumb:hover {
+  box-shadow: 0 0 0 10px rgba($accent, .1)
+}
+
+.input:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba($accent, .2)    
+}
+
+.input:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba($accent, .2)    
+}
+
+.input:active::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba($accent, .2)    
+}
+
+.input:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba($accent, .2)    
+}
+
+.value {
+  font-size: 26px;    
+  width: 50px;
+  text-align: center;
+}
+
+.range {
+  display: flex;
+  align-items: center;
+}
+
+
