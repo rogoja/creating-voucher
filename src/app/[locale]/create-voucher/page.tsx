@@ -1,15 +1,14 @@
 'use client'
 import React, { useState, useMemo } from 'react'
+import { useTranslations } from 'next-intl'
 
-import { useTranslation } from '@/app/i18n/client'
-import { ELanguages } from '@/app/i18n/settings'
-import { TextAreaField } from '@/components/fields/TextAreaField'
-import { Select } from '@/components/fields/Select'
-import { Button } from '@/components/Button'
-import { InputWithRange } from '@/components/fields/InputWithRange'
-import { Voucher } from '@/components/Voucher'
-import users from '@/constants/users'
-import delay from '@/utils/delay'
+import { TextAreaField } from 'components/fields/TextAreaField'
+import { Select } from 'components/fields/Select'
+import { Button } from 'components/Button'
+import { InputWithRange } from 'components/fields/InputWithRange'
+import { Voucher } from 'components/Voucher'
+import users from 'constants/users'
+import delay from 'utils/delay'
 
 import s from './page.module.scss'
 
@@ -21,8 +20,8 @@ const options = users.map(user => ({
 
 const minAmount = 1;
 
-export default function Home({ params: { lng } }: { params: { lng: ELanguages } }) {
-  const { t } = useTranslation(lng, 'create-voucher')
+export default function Home() {
+  const t = useTranslations('create-voucher')
   const [messageToFriend, setMessageToFriend] = useState('')
   const [amount, setAmount] = useState(minAmount)
   const [selectedUserId, setSelectedUserId] = useState('')
@@ -72,7 +71,6 @@ export default function Home({ params: { lng } }: { params: { lng: ELanguages } 
           message={messageToFriend}
           className={s.voucher}
           forWhoam={selectedOption?.label}
-          lng={lng}
         />
         <InputWithRange
           id="voucherDenomination"
@@ -98,7 +96,7 @@ export default function Home({ params: { lng } }: { params: { lng: ELanguages } 
           value={selectedUserId}
           className={s.textAreaField}
           options={options}
-          error={t(error)}
+          error={error && t(error)}
         />
         <Button
           type="submit"

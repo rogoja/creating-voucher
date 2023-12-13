@@ -1,0 +1,14 @@
+{
+  "create-voucher": {
+    "title": "Voucher creation",
+    "button": "Pay and send",
+    "forWhoam": "To",
+    "message": "Message",
+    "select": "Select...",
+    "voucherDenomination": "Voucher denomination",
+    "requiredField": "Required field"
+  },
+  "main": {
+    "button": "Create voucher"
+  }
+}

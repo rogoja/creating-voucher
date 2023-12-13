@@ -1,22 +1,31 @@
-'use client'
+import { headers } from 'next/headers'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { languages, ELanguages } from '@/app/i18n/settings'
+import  { Link, locales, ELanguages, defaultLocale, LocalePrefix, localePrefix } from 'navigation';
 
 import s from './style.module.scss'
 
 interface IHeader {
-  lng: ELanguages
+  locale: ELanguages
 }
 
-export const Header: React.FC<IHeader> = ({ lng }) => {
-  const pathname = usePathname().split('/').toSpliced(0, 2).join('/');
+const getHrefOnServer = (locale: ELanguages) => {
+  const url = headers().get('x-url') || '';
+  const pathnameArray = url.split('/');
 
+  if (LocalePrefix.asNeeded === localePrefix && locale === defaultLocale) {
+    pathnameArray.splice(0, locale === defaultLocale ? 3 : 4);
+  } else {
+    pathnameArray.splice(0, 4);
+  }
+
+  return `/${pathnameArray.join('/')}`
+}
+
+export const Header: React.FC<IHeader> = ({ locale }) => {
   return (
     <header className={s.header}>
-      {languages.filter((l) => lng !== l).map((l) => (
-        <Link href={`/${l}/${pathname}`} className={s.language} key={l}>
+      {locales.filter((l) => locale !== l).map((l) => (
+        <Link href={getHrefOnServer(locale)} className={s.language} key={l} locale={l}>
           {l}
         </Link>
       ))}

@@ -1,7 +1,6 @@
-import { useEffect, useLayoutEffect, useRef } from 'react'
+
 import cn from 'classnames'
-import { useTranslation } from '@/app/i18n/client'
-import { ELanguages } from '@/app/i18n/settings'
+import { useTranslations } from 'next-intl'
 
 import s from './style.module.scss'
 
@@ -10,7 +9,6 @@ interface IVoucher {
   message?: string;
   className?: string;
   forWhoam?: string;
-  lng: ELanguages;
 }
 
 export const Voucher: React.FC<IVoucher> = ({
@@ -18,9 +16,8 @@ export const Voucher: React.FC<IVoucher> = ({
   message,
   className,
   forWhoam,
-  lng,
 }) => {
-  const { t } = useTranslation(lng, 'create-voucher')
+  const t = useTranslations('create-voucher')
 
   return (
     <div className={cn(s.voucher, className)}>

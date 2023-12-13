@@ -1,0 +1,15 @@
+
+{
+  "create-voucher": {
+    "title": "Создание ваучера",
+    "button": "Оплатить и отправить",
+    "forWhoam": "Для",
+    "message": "Сообщение",
+    "select": "Выбрать...",
+    "voucherDenomination": "Номинал ваучера",
+    "requiredField": "Обязательное поле"
+  },
+  "main": {
+    "button": "Создать ваучер"
+  }
+}
